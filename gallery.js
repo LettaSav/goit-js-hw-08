@@ -11,6 +11,7 @@ const createImagesList = ({ preview, description, original }) => {
   imagesRef.src = preview;
   imagesRef.alt = description;
   imagesRef.dataset.source = original;
+
   imagesLinkRef.appendChild(imagesRef);
   imagesListRef.appendChild(imagesLinkRef);
   return imagesListRef;
@@ -22,6 +23,7 @@ const modalOverlay = document.querySelector(".lightbox__overlay");
 const modalClosure = document.querySelector(".lightbox__button");
 const modalSlider = document.querySelector(".lightbox__content");
 const modalWindow = document.querySelector(".js-lightbox");
+const modalImages = document.querySelector(".lightbox__image");
 
 galleryCreator.addEventListener("click", modalOpener);
 modalClosure.addEventListener("click", buttonForClosure);
@@ -35,7 +37,7 @@ function modalOpener(e) {
   }
   if (e.target.nodeName === "IMG") {
     modalWindow.classList.add("is-open");
-    const modalImages = document.querySelector(".lightbox__image");
+
     modalImages.src = e.target.getAttribute("data-source");
     modalImages.alt = e.target.alt;
   }
@@ -50,17 +52,5 @@ function buttonForClosure(e) {
     modalWindow.classList.remove("is-open");
     modalImages.src = "";
     modalImages.alt = "";
-  }
-}
-function galleryNavigation(e) {
-  if (e.keyCode == 37 && images.lenght < 0) {
-    modalSlider.children[i] -= 1;
-    modalImages.src = e.target.getAttribute("data-source");
-    modalImages.alt = e.target.alt;
-  }
-  if (e.keyCode == 39 && images.lenght <= images.lenght) {
-    modalSlider.children[i] += 1;
-    modalImages.src = e.target.getAttribute("data-source");
-    modalImages.alt = e.target.alt;
   }
 }
