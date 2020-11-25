@@ -29,7 +29,6 @@ galleryCreator.addEventListener("click", modalOpener);
 modalClosure.addEventListener("click", buttonForClosure);
 modalOverlay.addEventListener("click", buttonForClosure);
 window.addEventListener("keyup", buttonForClosure);
-window.addEventListener("keydown", galleryNavigation);
 function modalOpener(e) {
   e.preventDefault();
   if (e.target.nodeName !== "IMG") {
@@ -47,7 +46,7 @@ function buttonForClosure(e) {
   if (
     e.target.nodeName === "BUTTON" ||
     e.target === modalOverlay ||
-    e.keyCode == 27
+    e.keyCode === 27
   ) {
     modalWindow.classList.remove("is-open");
     modalImages.src = "";
